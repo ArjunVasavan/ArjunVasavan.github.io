@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arjun Vasavan - Embedded Systems Engineer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 50px 40px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .subtitle {
+            font-size: 1.3em;
+            opacity: 0.95;
+            margin-bottom: 20px;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .contact-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 0.95em;
+            transition: opacity 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .contact-links a:hover {
+            opacity: 0.8;
+        }
+
+        .summary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px 40px;
+            font-size: 1.1em;
+            line-height: 1.8;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        section {
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            color: #1e3c72;
+            font-size: 2em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        .education-grid {
+            display: grid;
+            gap: 20px;
+        }
+
+        .education-item {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .education-item h3 {
+            color: #1e3c72;
+            font-size: 1.3em;
+            margin-bottom: 8px;
+        }
+
+        .education-item .institution {
+            color: #666;
+            font-size: 1.05em;
+            margin-bottom: 5px;
+        }
+
+        .education-item .date {
+            color: #999;
+            font-size: 0.9em;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        .skill-category {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #764ba2;
+        }
+
+        .skill-category h3 {
+            color: #764ba2;
+            font-size: 1.2em;
+            margin-bottom: 12px;
+        }
+
+        .skill-category p {
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .experience-item {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .experience-item h3 {
+            color: #1e3c72;
+            font-size: 1.4em;
+            margin-bottom: 5px;
+        }
+
+        .experience-item .company {
+            color: #666;
+            font-size: 1.1em;
+            margin-bottom: 8px;
+        }
+
+        .experience-item .date {
+            color: #999;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+        }
+
+        .experience-item ul {
+            list-style: none;
+            margin-top: 10px;
+        }
+
+        .experience-item li {
+            padding: 8px 0;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .experience-item li:before {
+            content: "▹ ";
+            color: #667eea;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .award {
+            background: #fff3cd;
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            border-left: 4px solid #ffc107;
+        }
+
+        .award strong {
+            color: #856404;
+        }
+
+        .projects {
+            display: grid;
+            gap: 20px;
+        }
+
+        .project-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 25px;
+            border-radius: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-card h3 {
+            color: #1e3c72;
+            margin-bottom: 8px;
+            font-size: 1.4em;
+        }
+
+        .project-card .tech-stack {
+            color: #764ba2;
+            font-size: 0.9em;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .project-card ul {
+            list-style: none;
+            margin-top: 10px;
+        }
+
+        .project-card li {
+            padding: 5px 0;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .project-card li:before {
+            content: "• ";
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .cert-item {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #28a745;
+        }
+
+        .cert-item h3 {
+            color: #1e3c72;
+            font-size: 1.2em;
+            margin-bottom: 5px;
+        }
+
+        .cert-item p {
+            color: #666;
+            font-size: 0.95em;
+        }
+
+        .additional-info {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+        }
+
+        .additional-info h3 {
+            color: #1e3c72;
+            margin-bottom: 10px;
+        }
+
+        .additional-info p {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 10px;
+        }
+
+        footer {
+            background: #1e3c72;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            .content {
+                padding: 25px;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-links {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Arjun Vasavan</h1>
+            <p class="subtitle">Embedded Systems Engineer</p>
+            <div class="contact-links">
+                <a href="tel:+918921574365">📞 +91 8921574365</a>
+                <a href="mailto:vasavanarjun@gmail.com">✉️ vasavanarjun@gmail.com</a>
+                <a href="https://linkedin.com/in/arjun-vasavan" target="_blank">💼 LinkedIn</a>
+                <a href="https://github.com/ArjunVasavan" target="_blank">🔗 GitHub</a>
+                <a href="https://twitter.com/ArjunVasavan" target="_blank">🐦 Twitter</a>
+            </div>
+        </header>
+
+        <div class="summary">
+            <p>Embedded Systems Trainee at Emertxe (Bangalore), specializing in Embedded C, ESP32, and driver development. Electronics and Communication Engineering graduate from College of Engineering Chengannur with a Minor in Machine Learning. Experienced in low-level programming, systems development, and IoT applications with hands-on expertise in compiler design, embedded systems, and machine learning.</p>
+        </div>
+
+        <div class="content">
+            <section>
+                <h2>Education</h2>
+                <div class="education-grid">
+                    <div class="education-item">
+                        <h3>B.Tech in Electronics & Communication Engineering</h3>
+                        <p class="institution">College of Engineering Chengannur</p>
+                        <p style="color: #666; margin: 5px 0;">Minor: Machine Learning</p>
+                        <p class="date">Graduated June 2025 | Chengannur, Kerala</p>
+                    </div>
+                    <div class="education-item">
+                        <h3>Higher Secondary Education</h3>
+                        <p class="institution">St. Thomas Higher Secondary School</p>
+                        <p class="date">Graduated June 2021 | Pathanamthitta, Kerala</p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Technical Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>Programming Languages</h3>
+                        <p>C, C++, Python</p>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Embedded Systems</h3>
+                        <p>ESP32, LoRa, Arduino, Peripheral drivers, UART, GPIO, Timers, Memory management</p>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Developer Tools</h3>
+                        <p>Vim, Neovim, GCC, PyCharm, Proteus, Git</p>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Cloud & IoT</h3>
+                        <p>Arduino IoT Cloud, ThingSpeak</p>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Specialized Skills</h3>
+                        <p>Compiler design, Lexical analysis, Binary file formats, Steganography, File I/O, Data structures</p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Experience</h2>
+                <div class="experience-item">
+                    <h3>Embedded Systems Trainee</h3>
+                    <p class="company">Emertxe Information Technologies | Bangalore, India</p>
+                    <p class="date">June 2025 – Present</p>
+                    <ul>
+                        <li>Receive hands-on training in Embedded C, ESP32 microcontroller programming, peripheral driver development, memory concepts, and firmware debugging workflows</li>
+                        <li>Complete mini-projects including UART communication modules, GPIO control systems, timer implementations, and custom driver development</li>
+                        <li>Apply industry-grade coding standards, version control practices, and embedded firmware development methodologies</li>
+                    </ul>
+                    <div class="award">
+                        <strong>🏆 Spot Award (October 2025)</strong> - Recognized for exceeding course requirements by completing additional C module projects beyond the core curriculum
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <h3>Arduino & Sensor Integration Intern</h3>
+                    <p class="company">Stem Robotics | Remote</p>
+                    <p class="date">September 2023</p>
+                    <ul>
+                        <li>Worked on sensor integration projects with Arduino platforms and developed embedded prototypes</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h2>Projects</h2>
+                <div class="projects">
+                    <div class="project-card">
+                        <h3>MP3 Tag Editor</h3>
+                        <p class="tech-stack">C, Binary File Manipulation | November 2025</p>
+                        <ul>
+                            <li>Built CLI tool to parse and modify ID3v2.3 metadata tags using binary file operations and pointer manipulation</li>
+                        </ul>
+                    </div>
+
+                    <div class="project-card">
+                        <h3>BMP Steganography Tool</h3>
+                        <p class="tech-stack">C, LSB Encoding | October 2025</p>
+                        <ul>
+                            <li>Developed steganography system to securely embed and extract hidden data within BMP image files using LSB encoding</li>
+                        </ul>
+                    </div>
+
+                    <div class="project-card">
+                        <h3>Lexical Analyzer for C</h3>
+                        <p class="tech-stack">C, Compiler Design | September 2025</p>
+                        <ul>
+                            <li>Developed command-line tokenizer for C source code, identifying 32 keywords, operators, and symbols</li>
+                            <li>Implemented pattern matching and validation for multiple numeric formats including hexadecimal, octal, binary, and floating-point</li>
+                        </ul>
+                    </div>
+
+                    <div class="project-card">
+                        <h3>Bank Management System</h3>
+                        <p class="tech-stack">C, File I/O | August 2025</p>
+                        <ul>
+                            <li>Developed console banking system enabling account creation, deposits, withdrawals, and transaction logging</li>
+                            <li>Designed secure record update mechanism using file-based locking and validation to prevent data corruption</li>
+                        </ul>
+                    </div>
+
+                    <div class="project-card">
+                        <h3>Address Book (CLI)</h3>
+                        <p class="tech-stack">C, File I/O | July 2025</p>
+                        <ul>
+                            <li>Built command-line address book supporting add, search, edit, and delete operations with persistent storage</li>
+                            <li>Implemented structured record handling, input validation, and safe file updates for data integrity</li>
+                        </ul>
+                    </div>
+
+                    <div class="project-card">
+                        <h3>Health Monitoring System</h3>
+                        <p class="tech-stack">LoRa, ESP8266 | January 2025</p>
+                        <ul>
+                            <li>Designed wearable IoT system transmitting real-time vitals and GPS coordinates over LoRa with automated emergency alerts</li>
+                        </ul>
+                    </div>
+
+                    <div class="project-card">
+                        <h3>Deep Fake Detector</h3>
+                        <p class="tech-stack">Python, TensorFlow | December 2024</p>
+                        <ul>
+                            <li>Developed deepfake detection model using TensorFlow and convolutional neural networks achieving 75% accuracy on test dataset</li>
+                        </ul>
+                    </div>
+
+                    <div class="project-card">
+                        <h3>IoT Smart Parking System</h3>
+                        <p class="tech-stack">ESP32, Sensors | April 2024</p>
+                        <ul>
+                            <li>Engineered sensor-driven parking system with automated billing using ESP32 and Arduino IoT Cloud</li>
+                            <li>Developed real-time display interfaces and notification system, helping improve parking space utilization</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Certifications</h2>
+                <div class="cert-item">
+                    <h3>Essential Mathematics for Machine Learning</h3>
+                    <p>NPTEL Certification | IIT Roorkee | October 2023</p>
+                </div>
+            </section>
+
+            <section>
+                <h2>Additional Information</h2>
+                <div class="additional-info">
+                    <h3>Languages</h3>
+                    <p>Malayalam (Native), English (Fluent), Hindi (Conversational)</p>
+                    
+                    <h3>Core Competencies</h3>
+                    <p>Systems programming, Compiler design, Embedded systems, File format manipulation, Problem-solving, IoT development, Team collaboration</p>
+                </div>
+            </section>
+        </div>
+
+        <footer>
+            <p>&copy; 2025 Arjun Vasavan | Embedded Systems Engineer</p>
+            <p style="margin-top: 10px; font-size: 0.85em; opacity: 0.8;">Pathanamthitta, Kerala, India</p>
+        </footer>
+    </div>
+</body>
+</html>
