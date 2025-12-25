@@ -36,7 +36,6 @@
             overflow-x: hidden;
         }
 
-        /* Navbar */
         .navbar {
             position: fixed;
             top: 0;
@@ -59,7 +58,7 @@
 
         .logo {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 1.25rem;
+            font-size: 1.5rem;
             font-weight: 700;
             color: var(--text);
             cursor: pointer;
@@ -118,7 +117,6 @@
             transition: all 0.3s;
         }
 
-        /* Hero Section */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -169,8 +167,37 @@
         .hero-subtitle {
             font-size: 1.8rem;
             color: var(--text-light);
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             font-weight: 500;
+        }
+
+        .hero-badges {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .badge-award {
+            background: #fef3c7;
+            color: #92400e;
+            border: 1px solid #fbbf24;
+        }
+
+        .badge-ml {
+            background: #dbeafe;
+            color: #1e40af;
+            border: 1px solid #3b82f6;
         }
 
         .hero-description {
@@ -221,7 +248,6 @@
             transform: translateY(-2px);
         }
 
-        /* Photo Section */
         .hero-photo {
             display: flex;
             justify-content: center;
@@ -277,15 +303,6 @@
             object-fit: cover;
         }
 
-        /* If no image is provided, show placeholder */
-        .photo-placeholder-text {
-            font-size: 1.2rem;
-            color: var(--text-light);
-            text-align: center;
-            padding: 2rem;
-        }
-
-        /* Container */
         .container {
             max-width: 1100px;
             margin: 0 auto;
@@ -310,7 +327,6 @@
             background: var(--accent);
         }
 
-        /* Skills */
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -347,7 +363,6 @@
             line-height: 1.6;
         }
 
-        /* Experience */
         .experience-grid {
             display: grid;
             gap: 2rem;
@@ -391,15 +406,15 @@
             align-items: center;
             gap: 0.5rem;
             background: #fef3c7;
-            padding: 0.5rem 1rem;
+            padding: 0.75rem 1.25rem;
             border-radius: 6px;
             margin-top: 1rem;
             font-weight: 600;
             color: #92400e;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
+            border: 2px solid #fbbf24;
         }
 
-        /* Projects */
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -446,7 +461,6 @@
             color: #1d4ed8;
         }
 
-        /* Education */
         .education-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
@@ -473,6 +487,20 @@
             margin-bottom: 0.75rem;
         }
 
+        .highlight-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #dbeafe;
+            color: #1e40af;
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-top: 0.5rem;
+            border: 1px solid #3b82f6;
+        }
+
         .cert-badge {
             background: #d1fae5;
             border: 1px solid #10b981;
@@ -482,7 +510,6 @@
             color: #065f46;
         }
 
-        /* Contact */
         .contact-section {
             background: var(--card-bg);
             border-top: 1px solid var(--border);
@@ -537,7 +564,6 @@
             color: var(--text-light);
         }
 
-        /* Footer */
         footer {
             background: var(--card-bg);
             border-top: 1px solid var(--border);
@@ -546,7 +572,6 @@
             color: var(--text-light);
         }
 
-        /* Responsive */
         @media (max-width: 968px) {
             .hero-container {
                 grid-template-columns: 1fr;
@@ -556,10 +581,19 @@
             .photo-container {
                 width: 300px;
                 height: 300px;
+                margin: 0 auto;
             }
 
             .hero-photo {
                 order: -1;
+            }
+
+            .hero-title {
+                font-size: 2.8rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.5rem;
             }
         }
 
@@ -587,16 +621,28 @@
                 left: 0;
             }
 
+            .hero {
+                padding-top: 100px;
+            }
+
             .hero-title {
-                font-size: 2.5rem;
+                font-size: 2.2rem;
             }
 
             .hero-subtitle {
-                font-size: 1.5rem;
+                font-size: 1.3rem;
+            }
+
+            .hero-description {
+                font-size: 1rem;
             }
 
             .section-title {
-                font-size: 2rem;
+                font-size: 1.8rem;
+            }
+
+            .container {
+                padding: 3rem 1.5rem;
             }
 
             .skills-grid,
@@ -606,28 +652,61 @@
             }
 
             .photo-container {
-                width: 250px;
-                height: 250px;
+                width: 240px;
+                height: 240px;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .contact-grid {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .contact-card {
+                width: 100%;
             }
         }
 
-        /* Smooth animations on scroll */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 1.8rem;
+            }
 
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .photo-container {
+                width: 200px;
+                height: 200px;
+            }
+
+            .skill-card,
+            .experience-card,
+            .project-card,
+            .card {
+                padding: 1.5rem;
+            }
         }
     </style>
 </head>
 <body>
     <nav class="navbar">
         <div class="nav-content">
-            <div class="logo" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">arjun.dev</div>
+            <div class="logo" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">AV</div>
             <div class="menu-toggle" id="menuToggle">
                 <span></span>
                 <span></span>
@@ -654,18 +733,14 @@
                 </p>
                 <div class="hero-cta">
                     <a href="#contact" class="btn btn-primary">Get in touch</a>
+                    <a href="https://drive.google.com/file/d/1uMSU44elHS4sRrjHgiJaSx899XyhRwDv/view?usp=sharing" target="_blank" class="btn btn-secondary">📄 Download Resume</a>
                     <a href="https://github.com/ArjunVasavan" target="_blank" class="btn btn-secondary">View GitHub</a>
                 </div>
             </div>
             <div class="hero-photo">
                 <div class="photo-container">
                     <div class="photo-wrapper">
-                        <!-- Replace the src below with your actual photo URL -->
-                        <img src="https://media.licdn.com/dms/image/v2/D5603AQGBRfDi3LRikw/profile-displayphoto-scale_400_400/B56ZmBqoR_HQAk-/0/1758817062639?e=1768435200&v=beta&t=itUryFF2aBkV6J-FHLJsL8HrAd6hP77xKRCXKDdxydk" alt="Arjun Vasavan" class="photo-placeholder" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                        <div class="photo-placeholder-text" style="display: none;">
-                            Add your photo here<br>
-                            <small style="font-size: 0.9rem; opacity: 0.7;">Replace "your-photo.jpg" with your image URL</small>
-                        </div>
+                        <img src="https://media.licdn.com/dms/image/v2/D5603AQGBRfDi3LRikw/profile-displayphoto-scale_400_400/B56ZmBqoR_HQAk-/0/1758817062639?e=1768435200&v=beta&t=itUryFF2aBkV6J-FHLJsL8HrAd6hP77xKRCXKDdxydk" alt="Arjun Vasavan" class="photo-placeholder">
                     </div>
                 </div>
             </div>
@@ -675,19 +750,19 @@
     <div class="container" id="skills">
         <h2 class="section-title">Skills</h2>
         <div class="skills-grid">
-            <div class="skill-card fade-in">
+            <div class="skill-card">
                 <h3><span>💻</span> Programming</h3>
                 <p>C, C++, Python</p>
             </div>
-            <div class="skill-card fade-in">
+            <div class="skill-card">
                 <h3><span>⚡</span> Embedded Systems</h3>
                 <p>ESP32, LoRa, Arduino, Peripheral drivers, UART, GPIO, Timers, Memory management</p>
             </div>
-            <div class="skill-card fade-in">
+            <div class="skill-card">
                 <h3><span>🛠️</span> Tools</h3>
                 <p>Vim, Neovim, GCC, PyCharm, Proteus, Git</p>
             </div>
-            <div class="skill-card fade-in">
+            <div class="skill-card">
                 <h3><span>☁️</span> Cloud & IoT</h3>
                 <p>Arduino IoT Cloud, ThingSpeak</p>
             </div>
@@ -695,16 +770,16 @@
 
         <h2 class="section-title" id="experience">Experience</h2>
         <div class="experience-grid">
-            <div class="experience-card fade-in">
+            <div class="experience-card">
                 <h3>Embedded Systems Trainee</h3>
                 <p class="company">Emertxe Information Technologies</p>
                 <p class="date">June 2025 – Present • Bangalore, India</p>
                 <div class="award-badge">
-                    🏆 Spot Award - October 2025
+                    🏆 Spot Award (October 2025) - Recognized for exceptional performance in C programming projects
                 </div>
             </div>
 
-            <div class="experience-card fade-in">
+            <div class="experience-card">
                 <h3>Arduino & Sensor Integration Intern</h3>
                 <p class="company">Stem Robotics</p>
                 <p class="date">September 2023 • Remote</p>
@@ -713,56 +788,56 @@
 
         <h2 class="section-title" id="projects">Projects</h2>
         <div class="projects-grid">
-            <div class="project-card fade-in">
+            <div class="project-card">
                 <h3>Bank Management System</h3>
                 <a href="https://github.com/ArjunVasavan/bank-management-system" target="_blank" class="project-link">
                     View on GitHub →
                 </a>
             </div>
 
-            <div class="project-card fade-in">
+            <div class="project-card">
                 <h3>Interactive Unix-like Shell</h3>
                 <a href="https://github.com/ArjunVasavan/interactive_unix_like_shell" target="_blank" class="project-link">
                     View on GitHub →
                 </a>
             </div>
 
-            <div class="project-card fade-in">
+            <div class="project-card">
                 <h3>MP3 Tag Reader</h3>
                 <a href="https://github.com/ArjunVasavan/mp3-tag-reader" target="_blank" class="project-link">
                     View on GitHub →
                 </a>
             </div>
 
-            <div class="project-card fade-in">
+            <div class="project-card">
                 <h3>Lexical Analyzer</h3>
                 <a href="https://github.com/ArjunVasavan/Lexical_analyzer" target="_blank" class="project-link">
                     View on GitHub →
                 </a>
             </div>
 
-            <div class="project-card fade-in">
+            <div class="project-card">
                 <h3>Address Book</h3>
                 <a href="https://github.com/ArjunVasavan/Address-book" target="_blank" class="project-link">
                     View on GitHub →
                 </a>
             </div>
 
-            <div class="project-card fade-in">
+            <div class="project-card">
                 <h3>Real-Time Health Monitoring</h3>
                 <a href="https://github.com/ArjunVasavan/Real-Time-Health-Monitoring-System-for-Soldiers" target="_blank" class="project-link">
                     View on GitHub →
                 </a>
             </div>
 
-            <div class="project-card fade-in">
+            <div class="project-card">
                 <h3>LSB Steganography</h3>
                 <a href="https://github.com/ArjunVasavan/lsb-steganography" target="_blank" class="project-link">
                     View on GitHub →
                 </a>
             </div>
 
-            <div class="project-card fade-in">
+            <div class="project-card">
                 <h3>Smart Parking System</h3>
                 <a href="https://github.com/ArjunVasavan/Smart-Parking-and-Automated-Billing-System-using-IoT-and-RFID" target="_blank" class="project-link">
                     View on GitHub →
@@ -772,21 +847,23 @@
 
         <h2 class="section-title">Education</h2>
         <div class="education-grid">
-            <div class="card fade-in">
+            <div class="card">
                 <h3>B.Tech in Electronics & Communication Engineering</h3>
                 <p style="color: var(--accent); font-weight: 600; margin: 0.5rem 0;">College of Engineering Chengannur</p>
-                <p style="color: var(--text-light); margin: 0.5rem 0;">Minor: Machine Learning</p>
-                <p style="color: var(--text-light); font-size: 0.9rem;">June 2025 • Chengannur, Kerala</p>
+                <div class="highlight-badge">
+                    🤖 Minor in Machine Learning
+                </div>
+                <p style="color: var(--text-light); font-size: 0.9rem; margin-top: 1rem;">June 2025 • Chengannur, Kerala</p>
             </div>
-            <div class="card fade-in">
+            <div class="card">
                 <h3>Higher Secondary Education</h3>
                 <p style="color: var(--accent); font-weight: 600; margin: 0.5rem 0;">St. Thomas Higher Secondary School</p>
-                <p style="color: var(--text-light); font-size: 0.9rem;">June 2021 • Pathanamthitta, Kerala</p>
+                <p style="color: var(--text-light); font-size: 0.9rem; margin-top: 0.5rem;">June 2021 • Pathanamthitta, Kerala</p>
             </div>
         </div>
 
         <h2 class="section-title">Certifications</h2>
-        <div class="card cert-badge fade-in">
+        <div class="card cert-badge">
             <h3>Essential Mathematics for Machine Learning</h3>
             <p style="color: #047857; font-weight: 600; margin-top: 0.5rem;">NPTEL • IIT Roorkee • October 2023</p>
         </div>
@@ -799,11 +876,11 @@
                 Open to embedded systems opportunities and collaborations.
             </p>
             <div class="contact-grid">
-                <a href="mailto:vasavanarjun@gmail.com" class="contact-card">
+                <a href="/cdn-cgi/l/email-protection#532532203225323d322139263d13343e323a3f7d303c3e" class="contact-card">
                     <span>✉️</span>
                     <div class="contact-info">
                         <div class="label">Email</div>
-                        <div class="detail">vasavanarjun@gmail.com</div>
+                        <div class="detail"><span class="__cf_email__" data-cfemail="186e796b796e7976796a726d76587f75797174367b7775">[email&#160;protected]</span></div>
                     </div>
                 </a>
                 <a href="https://linkedin.com/in/arjun-vasavan" target="_blank" class="contact-card">
@@ -829,38 +906,9 @@
         <p style="margin-top: 0.5rem; font-size: 0.9rem;">Pathanamthitta, Kerala, India</p>
     </footer>
 
-    <script>
-        // Mobile menu
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         const menuToggle = document.getElementById('menuToggle');
         const navLinks = document.getElementById('navLinks');
 
         menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-            });
-        });
-
-        // Intersection Observer for fade-in animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
-        });
-    </script>
-</body>
-</html>
+            navLinks.classList.toggle('act
