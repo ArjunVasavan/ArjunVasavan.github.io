@@ -39,6 +39,12 @@ a {
 
 .code-block {
   margin-top: 1rem;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+.code-block a:hover {
+  text-decoration: underline;
 }
 
 @media (max-width: 600px) {
@@ -46,7 +52,15 @@ a {
     font-size: 12px;
     margin-top: 24px;
   }
+
   .code-block {
     word-break: break-word;
+    overflow-wrap: break-word;
+  }
+
+  /* make prompt line wrap cleanly */
+  .code-block > div:first-child {
+    white-space: normal;
+    word-break: break-all;
   }
 }
