@@ -3,6 +3,7 @@ body {
   font-family: 'Source Code Pro', monospace;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #0d1117;
 }
 
 code {
@@ -13,6 +14,7 @@ code {
   font-family: courier, monospace;
   color: #fff;
   width: 750px;
+  max-width: 100%;
   margin-left: auto;
   margin-right: auto;
   margin-top: 50px;
@@ -37,4 +39,14 @@ a {
 
 .code-block {
   margin-top: 1rem;
+}
+
+@media (max-width: 600px) {
+  #console {
+    font-size: 12px;
+    margin-top: 24px;
+  }
+  .code-block {
+    word-break: break-word;
+  }
 }
