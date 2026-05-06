@@ -15,14 +15,19 @@ function App() {
   const [idx, setIdx] = useState(0);
   const [text, setText] = useState(commands[0]);
   const [commandsIdx, setCommandsIdx] = useState(0);
+  const [cursorVisible, setCursorVisible] = useState(true);
+  const [isTyping, setIsTyping] = useState(true);
 
   useEffect(() => {
     if (text && currentIndex < text.length) {
+      setIsTyping(true);
       const timeout = setTimeout(() => {
         setCurrentText((prevText) => prevText + text[currentIndex]);
         setCurrentIndex((prevIndex) => prevIndex + 1);
       }, 60);
       return () => clearTimeout(timeout);
+    } else {
+      setIsTyping(false);
     }
   }, [currentIndex, text]);
 
@@ -40,6 +45,23 @@ function App() {
     return () => clearTimeout(timeoutId);
   }, [idx]);
 
+  useEffect(() => {
+    if (isTyping) {
+      setCursorVisible(true);
+      return;
+    }
+    const blinkInterval = setInterval(() => {
+      setCursorVisible((v) => !v);
+    }, 500);
+    return () => clearInterval(blinkInterval);
+  }, [isTyping]);
+
+  const Cursor = () => (
+    <span style={{ color: '#fff', opacity: cursorVisible ? 1 : 0 }}>█</span>
+  );
+
+  const activePrompt = isTyping ? (idx <= 1 ? 0 : idx <= 3 ? 1 : idx <= 5 ? 2 : 3) : -1;
+
   return (
     <div className="App">
       <div className="body">
@@ -50,6 +72,7 @@ function App() {
             <span id="a">arjun@archlinux</span>:<span id="b">~</span>
             <span id="c">$</span>
             <span id="z"> {idx === 0 ? currentText : commands[0]}</span>
+            {activePrompt === 0 && <Cursor />}
           </div>
           {isVisible && idx >= 1 && (
             <div id="g" style={{ marginTop: '4px' }}>
@@ -65,6 +88,7 @@ function App() {
               <span id="a">arjun@archlinux</span>:<span id="b">~</span>
               <span id="c">$</span>
               <span id="z"> {idx === 2 ? currentText : commands[1]}</span>
+              {activePrompt === 1 && <Cursor />}
             </div>
             {isVisible && idx >= 3 && (
               <>
@@ -113,6 +137,7 @@ function App() {
               <span id="a">arjun@archlinux</span>:<span id="b">~</span>
               <span id="c">$</span>
               <span id="z"> {idx === 4 ? currentText : commands[2]}</span>
+              {activePrompt === 2 && <Cursor />}
             </div>
             {isVisible && idx >= 5 && (
               <>
@@ -123,65 +148,72 @@ function App() {
                 </div>
 
                 <div className="code-block">
-                  <div id="e" style={{ fontWeight: 'bold' }}>linux-remote-process-manager/</div>
-                  <div id="op">
-                    TCP-based remote process diagnostics tool — inspect memory, CPU, file descriptors
-                    and ports of Linux processes on a remote machine. Lightweight remote htop.
+                  <div id="e" style={{ fontWeight: 'bold' }}>
+                    <a href="https://github.com/ArjunVasavan/tcp_ip_remote_process_manager" target="_blank" rel="noreferrer" style={{ color: '#ff0883', textDecoration: 'none' }}>
+                      linux-remote-process-manager/
+                    </a>
                   </div>
+                  <div id="op">TCP-based remote process diagnostics tool — inspect memory, CPU, file descriptors and ports of Linux processes on a remote machine. Lightweight remote htop.</div>
                   <div id="w">stack: C · Linux System Programming · TCP Sockets · /proc FS · Signals</div>
                 </div>
 
                 <div className="code-block">
-                  <div id="e" style={{ fontWeight: 'bold' }}>car-black-box-system/</div>
-                  <div id="op">
-                    PIC18F4580 automotive black box — logs speed, gear, timestamp and collision events
-                    to EEPROM with circular buffer, 10 persistent entries across power cycles.
+                  <div id="e" style={{ fontWeight: 'bold' }}>
+                    <a href="https://github.com/ArjunVasavan/car_black_box" target="_blank" rel="noreferrer" style={{ color: '#ff0883', textDecoration: 'none' }}>
+                      car-black-box-system/
+                    </a>
                   </div>
+                  <div id="op">PIC18F4580 automotive black box — logs speed, gear, timestamp and collision events to EEPROM with circular buffer, 10 persistent entries across power cycles.</div>
                   <div id="w">stack: Embedded C · PIC18F4580 · I2C · ADC · UART · DS1307 RTC</div>
                 </div>
 
                 <div className="code-block">
-                  <div id="e" style={{ fontWeight: 'bold' }}>can-bus-communication/</div>
-                  <div id="op">
-                    CAN protocol between PIC18F4580 nodes for automotive data exchange (temp, speed)
-                    with LCD real-time monitoring, node ID config and persistent storage.
+                  <div id="e" style={{ fontWeight: 'bold' }}>
+                    <a href="https://github.com/ArjunVasavan/can_bus_node_communication_system" target="_blank" rel="noreferrer" style={{ color: '#ff0883', textDecoration: 'none' }}>
+                      can-bus-communication/
+                    </a>
                   </div>
+                  <div id="op">CAN protocol between PIC18F4580 nodes for automotive data exchange (temp, speed) with LCD real-time monitoring, node ID config and persistent storage.</div>
                   <div id="w">stack: Embedded C · CAN Protocol · PIC18F4580 · Interrupts · LCD</div>
                 </div>
 
                 <div className="code-block">
-                  <div id="e" style={{ fontWeight: 'bold' }}>tftp-implementation/</div>
-                  <div id="op">
-                    UDP-based TFTP from scratch per RFC 1350 — file upload/download with opcode
-                    processing, block numbering, ACK sync and termination logic.
+                  <div id="e" style={{ fontWeight: 'bold' }}>
+                    <a href="https://github.com/ArjunVasavan/trivial_file_transfer_protocol" target="_blank" rel="noreferrer" style={{ color: '#ff0883', textDecoration: 'none' }}>
+                      tftp-implementation/
+                    </a>
                   </div>
+                  <div id="op">UDP-based TFTP from scratch per RFC 1350 — file upload/download with opcode processing, block numbering, ACK sync and termination logic.</div>
                   <div id="w">stack: C · UDP Sockets · Linux syscalls · Network Protocol Design</div>
                 </div>
 
                 <div className="code-block">
-                  <div id="e" style={{ fontWeight: 'bold' }}>minishell/</div>
-                  <div id="op">
-                    Unix-like interactive shell — internal and external commands, parsing, process
-                    creation, piping and I/O redirection.
+                  <div id="e" style={{ fontWeight: 'bold' }}>
+                    <a href="https://github.com/ArjunVasavan/interactive_unix_like_shell" target="_blank" rel="noreferrer" style={{ color: '#ff0883', textDecoration: 'none' }}>
+                      minishell/
+                    </a>
                   </div>
+                  <div id="op">Unix-like interactive shell — internal and external commands, parsing, process creation, piping and I/O redirection.</div>
                   <div id="w">stack: C · Process Management · Signals · System Calls</div>
                 </div>
 
                 <div className="code-block">
-                  <div id="e" style={{ fontWeight: 'bold' }}>red-black-tree/</div>
-                  <div id="op">
-                    Self-balancing Red-Black Tree in C — insertion, deletion, search and min/max at
-                    guaranteed O(log n) via rotations and color-based balancing.
+                  <div id="e" style={{ fontWeight: 'bold' }}>
+                    <a href="https://github.com/ArjunVasavan/red_black_tree_c" target="_blank" rel="noreferrer" style={{ color: '#ff0883', textDecoration: 'none' }}>
+                      red-black-tree/
+                    </a>
                   </div>
+                  <div id="op">Self-balancing Red-Black Tree in C — insertion, deletion, search and min/max at guaranteed O(log n) via rotations and color-based balancing.</div>
                   <div id="w">stack: C · Data Structures · Dynamic Memory Allocation</div>
                 </div>
 
                 <div className="code-block">
-                  <div id="e" style={{ fontWeight: 'bold' }}>c-to-html-syntax-highlighter/</div>
-                  <div id="op">
-                    C source to HTML converter — FSM-based tokenizer classifying comments, strings,
-                    preprocessor directives, keywords and numbers into syntax-highlighted HTML.
+                  <div id="e" style={{ fontWeight: 'bold' }}>
+                    <a href="https://github.com/ArjunVasavan/source_to_html_c" target="_blank" rel="noreferrer" style={{ color: '#ff0883', textDecoration: 'none' }}>
+                      c-to-html-syntax-highlighter/
+                    </a>
                   </div>
+                  <div id="op">C source to HTML converter — FSM-based tokenizer classifying comments, strings, preprocessor directives, keywords and numbers into syntax-highlighted HTML.</div>
                   <div id="w">stack: C · FSM · Tokenization · File I/O · Function Pointers</div>
                 </div>
               </>
@@ -196,6 +228,7 @@ function App() {
               <span id="a">arjun@archlinux</span>:<span id="b">~</span>
               <span id="c">$</span>
               <span id="z"> {idx === 6 ? currentText : commands[3]}</span>
+              {activePrompt === 3 && <Cursor />}
             </div>
             {isVisible && idx >= 7 && (
               <>
@@ -238,6 +271,16 @@ function App() {
                     {' '}[<span id="link"><a href="mailto:vasavanarjun@gmail.com">mail</a></span>]
                   </div>
                 </div>
+
+                {/* final blinking cursor - only shows after everything is done */}
+                {idx >= 8 && (
+                  <div className="code-block">
+                    <span id="a">arjun@archlinux</span>:<span id="b">~</span>
+                    <span id="c">$</span>
+                    <span id="z"> </span>
+                    <Cursor />
+                  </div>
+                )}
               </>
             )}
           </div>
